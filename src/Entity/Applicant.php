@@ -37,6 +37,11 @@ class Applicant
      */
     private $apApplicationDate;
 
+    /**
+     * @ORM\OneToOne(targetEntity=SkillProfile::class, mappedBy="spApplicant", cascade={"persist", "remove"})
+     */
+    private $apSkillProfile;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +91,28 @@ class Applicant
     public function setApApplicationDate(\DateTimeInterface $apApplicationDate): self
     {
         $this->apApplicationDate = $apApplicationDate;
+
+        return $this;
+    }
+
+    public function getApSkillProfile(): ?SkillProfile
+    {
+        return $this->apSkillProfile;
+    }
+
+    public function setApSkillProfile(?SkillProfile $apSkillProfile): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($apSkillProfile === null && $this->apSkillProfile !== null) {
+            $this->apSkillProfile->setSpApplicant(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($apSkillProfile !== null && $apSkillProfile->getSpApplicant() !== $this) {
+            $apSkillProfile->setSpApplicant($this);
+        }
+
+        $this->apSkillProfile = $apSkillProfile;
 
         return $this;
     }

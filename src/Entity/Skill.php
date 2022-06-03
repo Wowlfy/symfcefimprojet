@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SkillRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -26,6 +28,16 @@ class Skill
      * @ORM\ManyToOne(targetEntity=skillCategory::class, inversedBy="scSkill")
      */
     private $skCategory;
+
+    /**
+     * @ORM\OneToMany(targetEntity=ProfileDetail::class, mappedBy="pdSkill")
+     */
+    private $skProfileDetails;
+
+    public function __construct()
+    {
+        $this->skProfileDetails = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -52,6 +64,36 @@ class Skill
     public function setSkCategory(?skillCategory $skCategory): self
     {
         $this->skCategory = $skCategory;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ProfileDetail>
+     */
+    public function getSkProfileDetails(): Collection
+    {
+        return $this->skProfileDetails;
+    }
+
+    public function addSkProfileDetail(ProfileDetail $profileDetail): self
+    {
+        if (!$this->skProfileDetails->contains($profileDetail)) {
+            $this->skProfileDetails[] = $profileDetail;
+            $profileDetail->setPdSkill($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSkProfileDetail(ProfileDetail $profileDetail): self
+    {
+        if ($this->skProfileDetails->removeElement($profileDetail)) {
+            // set the owning side to null (unless already changed)
+            if ($profileDetail->getPdSkill() === $this) {
+                $profileDetail->setPdSkill(null);
+            }
+        }
 
         return $this;
     }
