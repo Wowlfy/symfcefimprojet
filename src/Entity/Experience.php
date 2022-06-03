@@ -69,5 +69,82 @@ class Experience
      */
     private $exProfilCompetence;
 
+    public function getExId(): ?int
+    {
+        return $this->exId;
+    }
+
+    public function getExNomPoste(): ?string
+    {
+        return $this->exNomPoste;
+    }
+
+    public function setExNomPoste(?string $exNomPoste): self
+    {
+        $this->exNomPoste = $exNomPoste;
+
+        return $this;
+    }
+
+    public function getExDateDebut(): ?\DateTimeInterface
+    {
+        return $this->exDateDebut;
+    }
+
+    public function setExDateDebut(?\DateTimeInterface $exDateDebut): self
+    {
+        $this->exDateDebut = $exDateDebut;
+
+        return $this;
+    }
+
+    public function getExDateFin(): ?\DateTimeInterface
+    {
+        return $this->exDateFin;
+    }
+
+    public function setExDateFin(?\DateTimeInterface $exDateFin): self
+    {
+        $this->exDateFin = $exDateFin;
+
+        return $this;
+    }
+
+    public function getExDescription(): ?string
+    {
+        return $this->exDescription;
+    }
+
+    public function setExDescription(?string $exDescription): self
+    {
+        $this->exDescription = $exDescription;
+
+        return $this;
+    }
+
+    public function getExEntreprise(): ?Entreprise
+    {
+        return $this->exEntreprise;
+    }
+
+    public function setExEntreprise(?Entreprise $exEntreprise): self
+    {
+        $this->exEntreprise = $exEntreprise;
+
+        return $this;
+    }
+
+    public function getExProfilCompetence(): ?ProfilCompetence
+    {
+        return $this->exProfilCompetence;
+    }
+
+    public function setExProfilCompetence(?ProfilCompetence $exProfilCompetence): self
+    {
+        $this->exProfilCompetence = $exProfilCompetence;
+
+        return $this;
+    }
+
 
 }

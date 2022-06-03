@@ -38,5 +38,34 @@ class Competence
      */
     private $cmCategorie;
 
+    public function getCmId(): ?int
+    {
+        return $this->cmId;
+    }
+
+    public function getCmNom(): ?string
+    {
+        return $this->cmNom;
+    }
+
+    public function setCmNom(?string $cmNom): self
+    {
+        $this->cmNom = $cmNom;
+
+        return $this;
+    }
+
+    public function getCmCategorie(): ?CategorieCompetence
+    {
+        return $this->cmCategorie;
+    }
+
+    public function setCmCategorie(?CategorieCompetence $cmCategorie): self
+    {
+        $this->cmCategorie = $cmCategorie;
+
+        return $this;
+    }
+
 
 }

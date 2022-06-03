@@ -72,5 +72,82 @@ class Mission
      */
     private $miCommercial;
 
+    public function getMiId(): ?int
+    {
+        return $this->miId;
+    }
+
+    public function getMiDateDebut(): ?\DateTimeInterface
+    {
+        return $this->miDateDebut;
+    }
+
+    public function setMiDateDebut(?\DateTimeInterface $miDateDebut): self
+    {
+        $this->miDateDebut = $miDateDebut;
+
+        return $this;
+    }
+
+    public function getMiDateFin(): ?\DateTimeInterface
+    {
+        return $this->miDateFin;
+    }
+
+    public function setMiDateFin(?\DateTimeInterface $miDateFin): self
+    {
+        $this->miDateFin = $miDateFin;
+
+        return $this;
+    }
+
+    public function getMiLieu(): ?string
+    {
+        return $this->miLieu;
+    }
+
+    public function setMiLieu(?string $miLieu): self
+    {
+        $this->miLieu = $miLieu;
+
+        return $this;
+    }
+
+    public function getMiCollaborateur(): ?Utilisateur
+    {
+        return $this->miCollaborateur;
+    }
+
+    public function setMiCollaborateur(?Utilisateur $miCollaborateur): self
+    {
+        $this->miCollaborateur = $miCollaborateur;
+
+        return $this;
+    }
+
+    public function getMiEntreprise(): ?Entreprise
+    {
+        return $this->miEntreprise;
+    }
+
+    public function setMiEntreprise(?Entreprise $miEntreprise): self
+    {
+        $this->miEntreprise = $miEntreprise;
+
+        return $this;
+    }
+
+    public function getMiCommercial(): ?Utilisateur
+    {
+        return $this->miCommercial;
+    }
+
+    public function setMiCommercial(?Utilisateur $miCommercial): self
+    {
+        $this->miCommercial = $miCommercial;
+
+        return $this;
+    }
+
 
 }
