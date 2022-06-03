@@ -49,5 +49,58 @@ class Candidat
      */
     private $caDateCandidature;
 
+    public function getCaId(): ?int
+    {
+        return $this->caId;
+    }
+
+    public function getCaNom(): ?string
+    {
+        return $this->caNom;
+    }
+
+    public function setCaNom(?string $caNom): self
+    {
+        $this->caNom = $caNom;
+
+        return $this;
+    }
+
+    public function getCaPrenom(): ?string
+    {
+        return $this->caPrenom;
+    }
+
+    public function setCaPrenom(?string $caPrenom): self
+    {
+        $this->caPrenom = $caPrenom;
+
+        return $this;
+    }
+
+    public function getCaEmail(): ?string
+    {
+        return $this->caEmail;
+    }
+
+    public function setCaEmail(?string $caEmail): self
+    {
+        $this->caEmail = $caEmail;
+
+        return $this;
+    }
+
+    public function getCaDateCandidature(): ?\DateTimeInterface
+    {
+        return $this->caDateCandidature;
+    }
+
+    public function setCaDateCandidature(?\DateTimeInterface $caDateCandidature): self
+    {
+        $this->caDateCandidature = $caDateCandidature;
+
+        return $this;
+    }
+
 
 }

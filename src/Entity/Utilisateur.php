@@ -84,5 +84,118 @@ class Utilisateur
      */
     private $utRole;
 
+    public function getUtId(): ?int
+    {
+        return $this->utId;
+    }
+
+    public function getUtNom(): ?string
+    {
+        return $this->utNom;
+    }
+
+    public function setUtNom(?string $utNom): self
+    {
+        $this->utNom = $utNom;
+
+        return $this;
+    }
+
+    public function getUtPrenom(): ?string
+    {
+        return $this->utPrenom;
+    }
+
+    public function setUtPrenom(?string $utPrenom): self
+    {
+        $this->utPrenom = $utPrenom;
+
+        return $this;
+    }
+
+    public function getUtEmail(): ?string
+    {
+        return $this->utEmail;
+    }
+
+    public function setUtEmail(?string $utEmail): self
+    {
+        $this->utEmail = $utEmail;
+
+        return $this;
+    }
+
+    public function getUtLogin(): ?string
+    {
+        return $this->utLogin;
+    }
+
+    public function setUtLogin(?string $utLogin): self
+    {
+        $this->utLogin = $utLogin;
+
+        return $this;
+    }
+
+    public function getUtPassword(): ?string
+    {
+        return $this->utPassword;
+    }
+
+    public function setUtPassword(?string $utPassword): self
+    {
+        $this->utPassword = $utPassword;
+
+        return $this;
+    }
+
+    public function isUtSousContrat(): ?bool
+    {
+        return $this->utSousContrat;
+    }
+
+    public function setUtSousContrat(?bool $utSousContrat): self
+    {
+        $this->utSousContrat = $utSousContrat;
+
+        return $this;
+    }
+
+    public function isUtEnMission(): ?bool
+    {
+        return $this->utEnMission;
+    }
+
+    public function setUtEnMission(?bool $utEnMission): self
+    {
+        $this->utEnMission = $utEnMission;
+
+        return $this;
+    }
+
+    public function getUtDateFinMission(): ?\DateTimeInterface
+    {
+        return $this->utDateFinMission;
+    }
+
+    public function setUtDateFinMission(?\DateTimeInterface $utDateFinMission): self
+    {
+        $this->utDateFinMission = $utDateFinMission;
+
+        return $this;
+    }
+
+    public function getUtRole(): ?int
+    {
+        return $this->utRole;
+    }
+
+    public function setUtRole(?int $utRole): self
+    {
+        $this->utRole = $utRole;
+
+        return $this;
+    }
+
 
 }

@@ -28,5 +28,22 @@ class CategorieCompetence
      */
     private $ccNom;
 
+    public function getCcId(): ?int
+    {
+        return $this->ccId;
+    }
+
+    public function getCcNom(): ?string
+    {
+        return $this->ccNom;
+    }
+
+    public function setCcNom(?string $ccNom): self
+    {
+        $this->ccNom = $ccNom;
+
+        return $this;
+    }
+
 
 }

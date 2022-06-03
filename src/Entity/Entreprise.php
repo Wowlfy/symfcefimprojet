@@ -35,5 +35,34 @@ class Entreprise
      */
     private $enAdresse;
 
+    public function getEnId(): ?int
+    {
+        return $this->enId;
+    }
+
+    public function getEnNom(): ?string
+    {
+        return $this->enNom;
+    }
+
+    public function setEnNom(?string $enNom): self
+    {
+        $this->enNom = $enNom;
+
+        return $this;
+    }
+
+    public function getEnAdresse(): ?string
+    {
+        return $this->enAdresse;
+    }
+
+    public function setEnAdresse(?string $enAdresse): self
+    {
+        $this->enAdresse = $enAdresse;
+
+        return $this;
+    }
+
 
 }

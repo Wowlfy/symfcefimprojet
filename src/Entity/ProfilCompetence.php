@@ -48,5 +48,46 @@ class ProfilCompetence
      */
     private $pcCollaborateur;
 
+    public function getPcId(): ?int
+    {
+        return $this->pcId;
+    }
+
+    public function getPcLibelle(): ?string
+    {
+        return $this->pcLibelle;
+    }
+
+    public function setPcLibelle(?string $pcLibelle): self
+    {
+        $this->pcLibelle = $pcLibelle;
+
+        return $this;
+    }
+
+    public function getPcCandidat(): ?Candidat
+    {
+        return $this->pcCandidat;
+    }
+
+    public function setPcCandidat(?Candidat $pcCandidat): self
+    {
+        $this->pcCandidat = $pcCandidat;
+
+        return $this;
+    }
+
+    public function getPcCollaborateur(): ?Utilisateur
+    {
+        return $this->pcCollaborateur;
+    }
+
+    public function setPcCollaborateur(?Utilisateur $pcCollaborateur): self
+    {
+        $this->pcCollaborateur = $pcCollaborateur;
+
+        return $this;
+    }
+
 
 }
