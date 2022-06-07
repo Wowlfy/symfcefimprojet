@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -49,6 +51,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="boolean")
      */
     private $usAvailable;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Mission::class, mappedBy="miEmployee")
+     */
+    private $usMissions;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Mission::class, mappedBy="miCommercial")
+     */
+    private $cmMissions;
+
+    /**
+     * @ORM\OneToOne(targetEntity=SkillProfile::class, mappedBy="spEmployee", cascade={"persist", "remove"})
+     */
+    private $usSkillProfile;
+
+    public function __construct()
+    {
+        $this->usMissions = new ArrayCollection();
+        $this->cmMissions = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -171,6 +194,88 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setUsAvailable(bool $usAvailable): self
     {
         $this->usAvailable = $usAvailable;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Mission>
+     */
+    public function getUsMissions(): Collection
+    {
+        return $this->usMissions;
+    }
+
+    public function addUsMission(Mission $usMission): self
+    {
+        if (!$this->usMissions->contains($usMission)) {
+            $this->usMissions[] = $usMission;
+            $usMission->setMiEmployee($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUsMission(Mission $usMission): self
+    {
+        if ($this->usMissions->removeElement($usMission)) {
+            // set the owning side to null (unless already changed)
+            if ($usMission->getMiEmployee() === $this) {
+                $usMission->setMiEmployee(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Mission>
+     */
+    public function getCmMissions(): Collection
+    {
+        return $this->cmMissions;
+    }
+
+    public function addCmMission(Mission $cmMission): self
+    {
+        if (!$this->cmMissions->contains($cmMission)) {
+            $this->cmMissions[] = $cmMission;
+            $cmMission->setMiCommercial($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCmMission(Mission $cmMission): self
+    {
+        if ($this->cmMissions->removeElement($cmMission)) {
+            // set the owning side to null (unless already changed)
+            if ($cmMission->getMiCommercial() === $this) {
+                $cmMission->setMiCommercial(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getUsSkillProfile(): ?SkillProfile
+    {
+        return $this->usSkillProfile;
+    }
+
+    public function setUsSkillProfile(?SkillProfile $usSkillProfile): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($usSkillProfile === null && $this->usSkillProfile !== null) {
+            $this->usSkillProfile->setSpEmployee(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($usSkillProfile !== null && $usSkillProfile->getSpEmployee() !== $this) {
+            $usSkillProfile->setSpEmployee($this);
+        }
+
+        $this->usSkillProfile = $usSkillProfile;
 
         return $this;
     }
