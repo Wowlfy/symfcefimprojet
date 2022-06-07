@@ -25,7 +25,7 @@ class Skill
     private $skName;
 
     /**
-     * @ORM\ManyToOne(targetEntity=skillCategory::class, inversedBy="scSkill")
+     * @ORM\ManyToOne(targetEntity=SkillCategory::class, inversedBy="scSkill")
      */
     private $skCategory;
 
@@ -56,12 +56,12 @@ class Skill
         return $this;
     }
 
-    public function getSkCategory(): ?skillCategory
+    public function getSkCategory(): ?SkillCategory
     {
         return $this->skCategory;
     }
 
-    public function setSkCategory(?skillCategory $skCategory): self
+    public function setSkCategory(?SkillCategory $skCategory): self
     {
         $this->skCategory = $skCategory;
 
