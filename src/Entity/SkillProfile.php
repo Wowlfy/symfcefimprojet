@@ -34,6 +34,11 @@ class SkillProfile
      */
     private $spExperiences;
 
+    /**
+     * @ORM\OneToOne(targetEntity=User::class, inversedBy="usSkillProfile", cascade={"persist", "remove"})
+     */
+    private $spEmployee;
+
     public function __construct()
     {
         $this->spExperiences = new ArrayCollection();
@@ -94,6 +99,18 @@ class SkillProfile
                 $spExperience->setExSkillProfile(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSpEmployee(): ?User
+    {
+        return $this->spEmployee;
+    }
+
+    public function setSpEmployee(?User $spEmployee): self
+    {
+        $this->spEmployee = $spEmployee;
 
         return $this;
     }

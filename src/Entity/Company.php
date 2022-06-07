@@ -34,9 +34,15 @@ class Company
      */
     private $coExperiences;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Mission::class, mappedBy="miCompany")
+     */
+    private $coMissions;
+
     public function __construct()
     {
         $this->coExperiences = new ArrayCollection();
+        $this->coMissions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -92,6 +98,36 @@ class Company
             // set the owning side to null (unless already changed)
             if ($coExperience->getExCompany() === $this) {
                 $coExperience->setExCompany(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Mission>
+     */
+    public function getCoMissions(): Collection
+    {
+        return $this->coMissions;
+    }
+
+    public function addCoMission(Mission $coMission): self
+    {
+        if (!$this->coMissions->contains($coMission)) {
+            $this->coMissions[] = $coMission;
+            $coMission->setMiCompany($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCoMission(Mission $coMission): self
+    {
+        if ($this->coMissions->removeElement($coMission)) {
+            // set the owning side to null (unless already changed)
+            if ($coMission->getMiCompany() === $this) {
+                $coMission->setMiCompany(null);
             }
         }
 
